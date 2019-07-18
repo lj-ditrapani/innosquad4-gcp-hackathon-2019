@@ -1,8 +1,6 @@
 .git
 *Dockerfile*
 */node_modules
-*/dist
-*/build
 */.nyc_output
 */logs
 *.tar
@@ -15,7 +13,4 @@ facebook-data-joe
 .ignore
 build.sh
 docker-run.sh
-README.md
-frontend/build
-frontend/node_modules
-frontend/.gitignore
+*/README.md
