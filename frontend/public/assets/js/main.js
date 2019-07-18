@@ -11,7 +11,7 @@ function hello(files) {
     console.log(zipFile)
     console.log(window.location.host + '/upload')
     $.ajax({
-        url: "http://" + window.location.host + '/upload',
+        url: 'http://' + window.location.host + '/upload',
         type: 'POST',
         contentType: 'application/octet-stream',
         data: zipFile,
