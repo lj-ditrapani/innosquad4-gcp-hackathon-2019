@@ -1,5 +1,5 @@
 const express = require('express')
-var contentType = require('content-type')
+// const contentType = require('content-type')
 const getRawBody = require('raw-body')
 const app = express()
 const port = 3000
@@ -9,6 +9,7 @@ const onUpload = (request, response) => {
   response.send(`Hello World! Size is ${zipData.length}\n`)
 }
 
+/*
 app.use(function (req, res, next) {
   getRawBody(req, {
     length: req.headers['content-length'],
@@ -20,6 +21,7 @@ app.use(function (req, res, next) {
     next()
   })
 })
+*/
 
 app.use(express.static('frontend/public'))
 app.post('/upload', onUpload)
