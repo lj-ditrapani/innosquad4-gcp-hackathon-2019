@@ -5,6 +5,7 @@ npm-debug.log
 *.swp
 dist
 coverage
+build
 /.vscode
 .idea
 facebook-data
