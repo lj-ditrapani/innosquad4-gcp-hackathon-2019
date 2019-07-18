@@ -6,7 +6,8 @@
     "scripts": {
         "start": "node src/server.js",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "fmt": "prettier --write \"*.json\" \"src/**/*.js\""
+        "fmt": "prettier --write \"*.json\" \"src/**/*.js\"",
+        "fmt-check": "prettier --check \"*.json\" \"src/**/*.js\""
     },
     "repository": {
         "type": "git",
