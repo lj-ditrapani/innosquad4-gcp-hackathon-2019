@@ -2248,6 +2248,17 @@
 	}
 
 /* Box */
+	.custombox{
+			width: 1000px;
+			height: 800px;
+			border: 1px solid grey;
+			background-color: white;
+		
+			margin-left: auto;
+    		margin-right: auto;
+
+
+	}
 
 	.box {
 		background: #fff;
