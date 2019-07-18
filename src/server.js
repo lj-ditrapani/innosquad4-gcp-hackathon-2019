@@ -9,15 +9,15 @@ const onUpload = (request, response, next) => {
   getRawBody(request, {
     length: request.headers['content-length'],
     limit: '5gb'
-  }, function (err, zipData) {
-    if (err) {
-      console.err(err)
-      next(err)
-    } else {
+  })
+    .then(zipData => {
       console.log(`parsed raw body.  ${zipData.length}`)
       response.send(`Hello World! Size is ${zipData.length}\n`)
-    }
-  })
+    })
+    .catch(err => {
+      console.err(err)
+      next(err)
+    })
 }
 
 
