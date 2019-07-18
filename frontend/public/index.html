@@ -29,10 +29,11 @@
 					<h2>Katanoo</h2>
 					<p>See your social media statistics all in one place</p>
 
-					<form enctype="multipart/form-data" action="http://localhost:3000/upload" method="post">
-						<input id="uploadFile" type="file" />
-						<input type="submit" class="button primary"/>
-					</form>
+                                        <form enctype="multipart/form-data" action="http://localhost:3000/upload" method="POST">
+                                          <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+                                          Choose a file to upload: <input name="uploadedfile" type="file" /><br />
+                                          <input type="submit" value="Upload File" />
+                                        </form>
 
 			
 				</section>
