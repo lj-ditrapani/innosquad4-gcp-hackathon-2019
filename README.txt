@@ -1,3 +1,10 @@
+
+    cd frontend
+    npm install
+    npm run build
+    cd ..
+    npm start
+
 todo:
 
 1. come up with data set
