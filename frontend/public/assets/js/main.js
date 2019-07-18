@@ -19,6 +19,7 @@ function hello(files) {
     })
         .done(data => {
             console.log(`response ${data}`)
+            console.log(Object.keys(data))
         })
         .fail((jqXHR, textStatus, errorThrown) => {
             console.error(errorThrown)
