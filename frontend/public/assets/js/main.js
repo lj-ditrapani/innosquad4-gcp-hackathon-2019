@@ -6,6 +6,8 @@
 
 function hello(files) {
     console.log("I get files")
+    console.log(files)
+    console.log(files[0])
 }
 
 ;(function($) {
