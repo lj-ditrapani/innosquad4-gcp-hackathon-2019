@@ -1,6 +1,7 @@
 const express = require('express')
 const contentType = require('content-type')
 const getRawBody = require('raw-body')
+const JSZip = require("jszip")
 const app = express()
 const port = 3000
 
@@ -10,9 +11,14 @@ const onUpload = (request, response, next) => {
         length: request.headers['content-length'],
         limit: '5gb'
     })
-        .then(zipData => {
-            console.log(`parsed raw body.  ${zipData.length}`)
-            response.send(`Hello World! Size is ${zipData.length}\n`)
+        .then(rawZipBytes => {
+            console.log(`parsed raw body.  ${rawZipBytes.length}`)
+            JSZip.loadAsync(rawZipBytes).then(zip =>
+                zip.file("search_history/your_search_history.json").async("string")
+            ).then(text => {
+                console.log(text);
+                response.send(`Hello World! Size is ${rawZipBytes.length}\n`)
+            })
         })
         .catch(err => {
             console.err(err)
