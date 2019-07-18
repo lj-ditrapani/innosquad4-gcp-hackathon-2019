@@ -13,6 +13,8 @@ RUN npm --prefix frontend install
 RUN npm install
 COPY frontend/.prettierrc.json frontend/tsconfig.json frontend/
 COPY frontend/src frontend/src/
+COPY frontend/images frontend/images/
+COPY frontend/public frontend/public/
 RUN npm --prefix frontend run all-pipeline
 COPY .prettierrc.json ./
 COPY src src/
