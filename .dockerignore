@@ -6,7 +6,9 @@
 */.nyc_output
 */logs
 *.tar
+*.zip
 facebook-data
+facebook-data-joe
 .dockerignore
 .DS_Store
 .gitignore
