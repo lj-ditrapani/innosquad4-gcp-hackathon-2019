@@ -17,7 +17,9 @@ const onUpload = (request, response, next) => {
                 zip.file("search_history/your_search_history.json").async("string")
             ).then(text => {
                 console.log(text);
-                response.send(`Hello World! Size is ${rawZipBytes.length}\n`)
+                const json = JSON.parse(text)
+                console.log(json)
+                response.send(`Hello World! Size is ${rawZipBytes.length}\n and you last searched for ${json.searches[0].title}`)
             })
         })
         .catch(err => {
