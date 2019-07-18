@@ -28,9 +28,13 @@
 				<section id="banner">
 					<h2>Katanoo</h2>
 					<p>See your social media statistics all in one place</p>
-					<ul class="actions special">
-						<li><a href="dashboard.html" class="button primary">Upload</a></li>
-					</ul>
+
+					<form enctype="multipart/form-data" action="http://localhost:3000/upload" method="post">
+						<input id="uploadFile" type="file" />
+						<input type="submit" class="button primary"/>
+					</form>
+
+			
 				</section>
 
 			<!-- Main -->
