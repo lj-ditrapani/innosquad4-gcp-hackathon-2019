@@ -1,1 +1,2 @@
-curl localhost:3000/upload -X POST -d @facebook-mauricenelson12327.zip
+curl localhost:3000/upload -X POST \
+  --data-binary "@facebook-mauricenelson12327.zip"
