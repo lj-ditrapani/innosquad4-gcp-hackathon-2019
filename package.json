@@ -1,0 +1,24 @@
+{
+  "name": "pimple",
+  "version": "0.0.1",
+  "description": "analyze personal facebook data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lj-ditrapani/innosquad4-gcp-hackathon-2019.git"
+  },
+  "keywords": [
+    "facebook",
+    "google",
+    "hackathon"
+  ],
+  "author": "Scotiabank-Innosquad4",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lj-ditrapani/innosquad4-gcp-hackathon-2019/issues"
+  },
+  "homepage": "https://github.com/lj-ditrapani/innosquad4-gcp-hackathon-2019#readme"
+}
