@@ -27,7 +27,9 @@ const onUpload = (request, response, next) => {
                     greeting: "hello world",
                     size: rawZipBytes.length,
                     lastSearch: json.searches[0].title,
-                    messages: getMessageData(zip)
+                    messages: getMessageData(zip),
+                    searchHistory: getSearchHistory(zip),
+                    locations: getLocationData(zip)
                 })
             })
         })
@@ -38,6 +40,14 @@ const onUpload = (request, response, next) => {
 }
 
 const getMessageData = zip => {
+    return { m1: "hi", m2: "by" }
+}
+
+const getSearchHistory = zip => {
+    return { m1: "hi", m2: "by" }
+}
+
+const getLocationData = zip => {
     return { m1: "hi", m2: "by" }
 }
 
