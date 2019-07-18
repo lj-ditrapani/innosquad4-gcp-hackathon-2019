@@ -14,18 +14,31 @@ const onUpload = (request, response, next) => {
         .then(rawZipBytes => {
             console.log(`parsed raw body.  ${rawZipBytes.length}`)
             JSZip.loadAsync(rawZipBytes).then(zip =>
-                zip.file("search_history/your_search_history.json").async("string")
-            ).then(text => {
+                zip
+                .file("search_history/your_search_history.json")
+                .async("string")
+                .then(text => [zip, text])
+            ).then(pair => {
+                const [zip, text] = pair
                 console.log(text);
                 const json = JSON.parse(text)
                 console.log(json)
-                response.send(`Hello World! Size is ${rawZipBytes.length}\n and you last searched for ${json.searches[0].title}`)
+                response.json({
+                    greeting: "hello world",
+                    size: rawZipBytes.length,
+                    lastSearch: json.searches[0].title,
+                    messages: getMessageData(zip)
+                })
             })
         })
         .catch(err => {
             console.err(err)
             next(err)
         })
+}
+
+const getMessageData = zip => {
+    return { m1: "hi", m2: "by" }
 }
 
 app.use(express.static('frontend/public'))
