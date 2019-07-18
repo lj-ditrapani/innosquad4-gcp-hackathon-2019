@@ -2,9 +2,11 @@
   "name": "pimple",
   "version": "0.0.1",
   "description": "analyze personal facebook data",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fmt": "prettier --write \"src/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/lj-ditrapani/innosquad4-gcp-hackathon-2019/issues"
   },
-  "homepage": "https://github.com/lj-ditrapani/innosquad4-gcp-hackathon-2019#readme"
+  "homepage": "https://github.com/lj-ditrapani/innosquad4-gcp-hackathon-2019#readme",
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
 }
