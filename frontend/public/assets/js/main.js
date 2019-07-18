@@ -7,7 +7,21 @@
 function hello(files) {
     console.log("I get files")
     console.log(files)
-    console.log(files[0])
+    const zipFile = files[0]
+    console.log(zipFile)
+    $.ajax({
+        url: window.location.host + '/upload',
+        type: 'POST',
+        contentType: 'application/octet-stream',  
+        data: zipFile,
+        processData: false
+    }).done(data => {
+        console.log(`response ${data}`)
+    }).fail((jqXHR, textStatus, errorThrown) => {
+        console.error(errorThrown)
+        console.error(textStatus)
+        console.error(jqXHR)
+    });
 }
 
 ;(function($) {
