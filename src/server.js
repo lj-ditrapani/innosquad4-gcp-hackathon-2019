@@ -5,24 +5,17 @@ const app = express()
 const port = 3000
 
 const onUpload = (request, response) => {
-  const zipData = request.text
-  response.send(`Hello World! Size is ${zipData.length}\n`)
-}
-
-app.use(function (request, response, next) {
-  /*
+  console.log(request.headers['content-type'])
   getRawBody(request, {
     length: request.headers['content-length'],
     limit: '5gb',
     encoding: contentType.parse(request).parameters.charset
-  }, function (err, string) {
+  }, function (err, zipData) {
     if (err) return next(err)
-    request.text = string
-    next()
+    response.send(`Hello World! Size is ${zipData.length}\n`)
   })
-  */
-  next()
-})
+}
+
 
 app.use(express.static('frontend/public'))
 app.post('/upload', onUpload)
