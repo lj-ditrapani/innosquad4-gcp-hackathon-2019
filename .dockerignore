@@ -1,0 +1,10 @@
+.git
+*Dockerfile*
+*/node_modules
+*/dist
+*/build
+*/.nyc_output
+*/logs
+*.tar
+/faceboo-data
+README.md
