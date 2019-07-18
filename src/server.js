@@ -6,7 +6,7 @@ const port = 3000
 
 const onUpload = (request, response) => {
   const zipData = request.text
-  response.send(`Hello World! Size is ${zipData.length}`)
+  response.send(`Hello World! Size is ${zipData.length}\n`)
 }
 
 app.use(function (req, res, next) {
