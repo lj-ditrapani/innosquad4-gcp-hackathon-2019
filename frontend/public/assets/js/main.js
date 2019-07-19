@@ -15,6 +15,7 @@ function sendZip(files) {
             console.log('response vv')
             console.log(data)
             console.log(Object.keys(data))
+            addMapPins(data.locations)
             $('#index').hide()
             $('.dashboard').show()
         })
@@ -51,6 +52,7 @@ $(document).ready(() => {
 })
 
 const setGoogleMapsScript = key => {
+    console.log(key)
     const googleMapScript =
         '<script async defer src="https://maps.googleapis.com/maps/api/js?key=' +
         key +
@@ -66,21 +68,13 @@ function initMap() {
         center: new google.maps.LatLng(40.4637, 3.7492),
         mapTypeId: 'terrain'
     })
-
-    // Create a <script> tag and set the USGS URL as the source.
-    let script = document.createElement('script')
-    script.src =
-        'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js'
-    document.getElementsByTagName('head')[0].appendChild(script)
 }
 
 // Loop through the results array and place a marker for each
 // set of coordinates.
-window.eqfeed_callback = function(results) {
-    console.log(results)
-    for (let i = 0; i < results.features.length; i++) {
-        const coords = results.features[i].geometry.coordinates
-        const latLng = new google.maps.LatLng(coords[1], coords[0])
+function addMapPins(results) {
+    for (let coords of results) {
+        const latLng = new google.maps.LatLng(coords[0], coords[1])
         const marker = new google.maps.Marker({
             position: latLng,
             map: map
