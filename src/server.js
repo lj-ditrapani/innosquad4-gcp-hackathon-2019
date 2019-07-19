@@ -2,6 +2,7 @@ const express = require('express')
 const getRawBody = require('raw-body')
 const JSZip = require('jszip')
 const fs = require('fs')
+const _ = require('lodash')
 const app = express()
 const port = 3000
 const request = require('request-promise-native')
@@ -43,7 +44,9 @@ const getMessageData = zip => {
         .folder('messages/inbox')
         .filter((path, filter) => path.endsWith('message_1.json'))
     const promises = zips.map(zip => zip.async('string'))
-    return Promise.all(promises).then(textArray => textArray.map(processMessageText))
+    return Promise
+        .all(promises)
+        .then(textArray => _.flatten(textArray.map(processMessageText)), true)
 }
 
 const processMessageText = text => {
