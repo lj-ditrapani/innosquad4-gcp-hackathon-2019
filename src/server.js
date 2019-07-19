@@ -324,11 +324,9 @@ const getLocationData = zip => {
             ip: '24.141.200.213'
         }
     ];
-    let ipAddresses = [];
-    for (i in json)
-        ipAddresses.push(json[i]['ip']);
-    var fs = require("fs");
-    var text = fs.readFileSync("./apiKey.txt", 'utf8');
+    const ipAddresses = json.map(function(x) {return x.ip});
+    let fs = require("fs");
+    let text = fs.readFileSync("./apiKey.txt", 'utf8');
     // var text =
     console.log("THIS IS A LOG");
     console.log(text.toString());
