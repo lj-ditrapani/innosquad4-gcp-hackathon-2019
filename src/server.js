@@ -1,4 +1,5 @@
 const express = require('express');
+const _ = require('lodash')
 const contentType = require('content-type');
 const getRawBody = require('raw-body');
 const JSZip = require('jszip');
@@ -39,19 +40,12 @@ const processZip = rawZipBytes =>
         })
 
 const getMessageData = zip => {
-    /*
     console.log('heer')
-    zip.folder("/messages/inbox/").filter((path, filter) => {
-        console.log(path)
-        return true
-    }).async("string").then(text => {
-        console.log('aeoua')
-        console.log(text)
-        console.log('aeoua')
-    })
-    console.log('xxx')
-    */
-    return Promise.resolve({ m1: 'hi', m2: 'by' })
+    const zips = zip.folder("messages/inbox").filter((path, filter) =>
+        _.endsWith(path, "message_1.json")
+    )
+    const promises = zips.map(zip => zip.async('string').then(json => JSON.parse(json)))
+    return Promise.all(promises)
 };
 
 const getSearchHistory = zip =>
@@ -337,5 +331,5 @@ app.use(express.static('frontend/public'));
 app.post('/upload', onUpload);
 
 // const file = fs.readFileSync("facebook-mauricenelson12327.zip")
-// processZip(file)
+// processZip(file).then(r => console.log(r))
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
