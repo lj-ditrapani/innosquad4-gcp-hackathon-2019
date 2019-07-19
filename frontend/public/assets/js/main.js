@@ -12,7 +12,8 @@ function sendZip(files) {
         processData: false
     })
         .done(data => {
-            console.log(`response ${data}`)
+            console.log('response vv')
+            console.log(data)
             console.log(Object.keys(data))
         })
         .fail((jqXHR, textStatus, errorThrown) => {

@@ -12,27 +12,8 @@ const onUpload = (request, response, next) => {
         length: request.headers['content-length'],
         limit: '5gb'
     })
-        .then(rawZipBytes => {
-            JSZip.loadAsync(rawZipBytes)
-                .then(zip =>
-                    zip
-                        .file('search_history/your_search_history.json')
-                        .async('string')
-                        .then(text => [zip, text])
-                )
-                .then(pair => {
-                    const [zip, text] = pair;
-                    const json = JSON.parse(text);
-                    response.json({
-                        greeting: 'hello world',
-                        size: rawZipBytes.length,
-                        lastSearch: json.searches[0].title,
-                        messages: getMessageData(zip),
-                        searchHistory: getSearchHistory(zip),
-                        locations: getLocationData(zip)
-                    })
-                })
-        })
+        .then(rawZipBytes => processZip(rawZipBytes))
+        .then(json => response.json(json))
         .catch(err => {
             console.error(err)
             next(err)
@@ -41,22 +22,19 @@ const onUpload = (request, response, next) => {
 
 const processZip = rawZipBytes =>
     JSZip.loadAsync(rawZipBytes)
-        .then(zip =>
-            zip
-            .file('search_history/your_search_history.json')
-            .async('string')
-            .then(text => [zip, text])
-        )
-        .then(pair => {
-            const [zip, text] = pair;
-            const json = JSON.parse(text);
+        .then(zip => {
+            const p1 = getMessageData(zip)
+            const p2 = getSearchHistory(zip)
+            const p3 = getLocationData(zip)
+            return Promise.all([p1, p2, p3])
+        })
+        .then(values => {
+            const [messages, searchHistory, locations] = values
             return {
-                greeting: 'hello world',
-                size: rawZipBytes.length,
-                lastSearch: json.searches[0].title,
-                messages: getMessageData(zip),
-                searchHistory: getSearchHistory(zip),
-                locations: getLocationData(zip)
+                rawSize: rawZipBytes.length,
+                messages: messages,
+                searchHistory: searchHistory,
+                locations: locations
             }
         })
 
@@ -73,12 +51,14 @@ const getMessageData = zip => {
     })
     console.log('xxx')
     */
-    return { m1: 'hi', m2: 'by' }
+    return Promise.resolve({ m1: 'hi', m2: 'by' })
 };
 
-const getSearchHistory = zip => {
-    return { m1: 'hi', m2: 'by' }
-};
+const getSearchHistory = zip =>
+    zip
+        .file('search_history/your_search_history.json')
+        .async('string')
+        .then(text => JSON.parse(text))
 
 const getLocationData = zip => {
     const json = [
@@ -352,8 +332,7 @@ const getLocationData = zip => {
     // var text =
     console.log("THIS IS A LOG");
     console.log(text.toString());
-    return {m1: 'hi', m2: 'by'}
-
+    return Promise.resolve({m1: 'hi', m2: 'by'})
 }
 
 app.use(express.static('frontend/public'));
