@@ -5,16 +5,18 @@ function sendZip(files) {
     console.log(zipFile)
     console.log(window.location.host + '/upload')
     $.ajax({
-        url: 'http://' + window.location.host + '/upload',
-        type: 'POST',
-        contentType: 'application/octet-stream',
-        data: zipFile,
-        processData: false
-    })
+            url: 'http://' + window.location.host + '/upload',
+            type: 'POST',
+            contentType: 'application/octet-stream',
+            data: zipFile,
+            processData: false
+        })
         .done(data => {
             console.log('response vv')
             console.log(data)
             console.log(Object.keys(data))
+            $("#index").hide()
+            $(".dashboard").show()
         })
         .fail((jqXHR, textStatus, errorThrown) => {
             console.error(errorThrown)
