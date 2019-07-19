@@ -1,18 +1,18 @@
-const express = require('express')
-const contentType = require('content-type')
-const getRawBody = require('raw-body')
-const JSZip = require('jszip')
-const app = express()
-const port = 3000
+const express = require('express');
+const contentType = require('content-type');
+const getRawBody = require('raw-body');
+const JSZip = require('jszip');
+const app = express();
+const port = 3000;
 
 const onUpload = (request, response, next) => {
-    console.log(request.headers['content-type'])
+    console.log(request.headers['content-type']);
     getRawBody(request, {
         length: request.headers['content-length'],
         limit: '5gb'
     })
         .then(rawZipBytes => {
-            console.log(`parsed raw body.  ${rawZipBytes.length}`)
+            // console.log(`parsed raw body.  ${rawZipBytes.length}`)
             JSZip.loadAsync(rawZipBytes)
                 .then(zip =>
                     zip
@@ -21,10 +21,10 @@ const onUpload = (request, response, next) => {
                         .then(text => [zip, text])
                 )
                 .then(pair => {
-                    const [zip, text] = pair
-                    console.log(text)
-                    const json = JSON.parse(text)
-                    console.log(json)
+                    const [zip, text] = pair;
+                    // console.log(text)
+                    const json = JSON.parse(text);
+                    // console.log(json)
                     response.json({
                         greeting: 'hello world',
                         size: rawZipBytes.length,
@@ -36,18 +36,18 @@ const onUpload = (request, response, next) => {
                 })
         })
         .catch(err => {
-            console.err(err)
+            console.err(err);
             next(err)
         })
-}
+};
 
 const getMessageData = zip => {
     return { m1: 'hi', m2: 'by' }
-}
+};
 
 const getSearchHistory = zip => {
     return { m1: 'hi', m2: 'by' }
-}
+};
 
 const getLocationData = zip => {
     const json = [
@@ -312,18 +312,20 @@ const getLocationData = zip => {
         {
             ip: '24.141.200.213'
         }
-    ]
-    var ipAddresses = []
-    for (i in json) {
-        ipAddresses.push(json[i]['ip'])
-    }
-    for (i in ipAddresses) {
-        ipAddresses[i]
-    }
-    return { m1: 'hi', m2: 'by' }
+    ];
+    let ipAddresses = [];
+    for (i in json)
+        ipAddresses.push(json[i]['ip']);
+    var fs = require("fs");
+    var text = fs.readFileSync("./apiKey.txt", 'utf8');
+    // var text =
+    console.log("THIS IS A LOG");
+    console.log(text.toString());
+    return {m1: 'hi', m2: 'by'}
+
 }
 
-app.use(express.static('frontend/public'))
-app.post('/upload', onUpload)
+app.use(express.static('frontend/public'));
+app.post('/upload', onUpload);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
