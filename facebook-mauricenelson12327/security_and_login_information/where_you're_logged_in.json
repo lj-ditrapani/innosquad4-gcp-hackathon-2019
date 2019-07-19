@@ -1,0 +1,64 @@
+{
+  "active_sessions": [
+    {
+      "created_timestamp": 1560310347,
+      "updated_timestamp": 1563457141,
+      "ip_address": "72.142.86.122",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
+      "datr_cookie": "O3IA********************",
+      "device": "Windows PC",
+      "location": "Toronto, ON, Canada",
+      "app": "Chrome"
+    },
+    {
+      "created_timestamp": 1472785264,
+      "updated_timestamp": 1563413594,
+      "ip_address": "208.69.12.34",
+      "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/FBIOS;FBAV/229.0.0.49.116;FBBV/162376927;FBDV/iPhone10,4;FBMD/iPhone;FBSN/iOS;FBSV/12.3.1;FBSS/2;FBCR/Virgin;FBID/phone;FBLC/en_US;FBOP/5;FBRV/0]",
+      "datr_cookie": "Wswv********************",
+      "device": "iPhone 8",
+      "location": "Toronto, ON, Canada",
+      "app": "Facebook app"
+    },
+    {
+      "created_timestamp": 1488941664,
+      "updated_timestamp": 1563402102,
+      "ip_address": "208.69.12.34",
+      "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/MessengerForiOS;FBAV/223.0.0.49.116;FBBV/162342589;FBDV/iPhone10,4;FBMD/iPhone;FBSN/iOS;FBSV/12.3.1;FBSS/2;FBCR/Virgin;FBID/phone;FBLC/en_US;FBOP/5]",
+      "datr_cookie": "dp8v********************",
+      "device": "iPhone 8",
+      "location": "Toronto, ON, Canada",
+      "app": "Messenger"
+    },
+    {
+      "created_timestamp": 1557836070,
+      "updated_timestamp": 1563395506,
+      "ip_address": "199.166.14.72",
+      "user_agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
+      "datr_cookie": "FrHa********************",
+      "device": "Windows PC",
+      "location": "Toronto, ON, Canada",
+      "app": "Chrome"
+    },
+    {
+      "created_timestamp": 1542782366,
+      "updated_timestamp": 1560300295,
+      "ip_address": "208.69.12.34",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36",
+      "datr_cookie": "rfVk********************",
+      "device": "Windows PC",
+      "location": "Toronto, ON, Canada",
+      "app": "Chrome"
+    },
+    {
+      "created_timestamp": 1480774263,
+      "updated_timestamp": 1543455701,
+      "ip_address": "2001:1970:5229:a200:3cf6:ed42:ce4b:7f67",
+      "user_agent": "Mac+OS+X/10.13.5 (17F77) CalendarAgent/399.2.2",
+      "datr_cookie": "1UP_********************",
+      "device": "Device type unknown",
+      "location": "Kingston, ON, Canada",
+      "app": ""
+    }
+  ]
+}

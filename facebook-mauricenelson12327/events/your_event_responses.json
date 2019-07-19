@@ -1,0 +1,48 @@
+{
+  "event_responses": {
+    "events_joined": [
+      {
+        "name": "Tip Top Secret Hacker Stuff",
+        "start_timestamp": 1563480000,
+        "end_timestamp": 0,
+        "place": {
+          "name": "Toronto Ontario"
+        },
+        "description": "Hackerguy stuff amiright",
+        "create_timestamp": 1563478187
+      }
+    ],
+    "events_interested": [
+      {
+        "name": "Hackathon",
+        "start_timestamp": 1567841400,
+        "end_timestamp": 1567963800
+      },
+      {
+        "name": "Hackathon 2019",
+        "start_timestamp": 1564786800,
+        "end_timestamp": 1564894800
+      },
+      {
+        "name": "InsKru Hackathon",
+        "start_timestamp": 1564191000,
+        "end_timestamp": 1564308000
+      },
+      {
+        "name": "Taste of Germany",
+        "start_timestamp": 1563717600,
+        "end_timestamp": 1563735600
+      },
+      {
+        "name": "BIG on Bloor \u00e2\u0080\u0093 Sonic Future Bloor",
+        "start_timestamp": 1563641100,
+        "end_timestamp": 1563681540
+      },
+      {
+        "name": "TD Weekend Series in Woodbine Park",
+        "start_timestamp": 1563566400,
+        "end_timestamp": 1563753600
+      }
+    ]
+  }
+}

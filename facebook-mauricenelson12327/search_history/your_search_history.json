@@ -1,0 +1,85 @@
+{
+  "searches": [
+    {
+      "timestamp": 1563466969,
+      "data": [
+        {
+          "text": "hackathon"
+        }
+      ],
+      "title": "You searched for hackathon"
+    },
+    {
+      "timestamp": 1563466965,
+      "data": [
+        {
+          "text": "hackahton"
+        }
+      ],
+      "title": "You searched for hackahton"
+    },
+    {
+      "timestamp": 1563466912,
+      "data": [
+        {
+          "text": "Benjamin Johns"
+        }
+      ],
+      "title": "You searched for Benjamin Johns"
+    },
+    {
+      "timestamp": 1563466906,
+      "data": [
+        {
+          "text": "Ben Johns"
+        }
+      ],
+      "title": "You searched for Ben Johns"
+    },
+    {
+      "timestamp": 1563466897,
+      "data": [
+        {
+          "text": "women in tech"
+        }
+      ],
+      "title": "You searched for women in tech"
+    },
+    {
+      "timestamp": 1563466888,
+      "data": [
+        {
+          "text": "google cloud"
+        }
+      ],
+      "title": "You searched for google cloud"
+    },
+    {
+      "timestamp": 1563466870,
+      "data": [
+        {
+          "text": "Joseph Grosso"
+        }
+      ],
+      "title": "You searched for Joseph Grosso"
+    },
+    {
+      "timestamp": 1563466865,
+      "data": [
+        {
+          "text": "Joseph James Grosso"
+        }
+      ],
+      "title": "You searched for Joseph James Grosso"
+    },
+    {
+      "timestamp": 1563466855,
+      "data": [
+        {
+          "text": "Joe Grosso"
+        }
+      ],
+      "title": "You searched for Joe Grosso"
+    }
+  ]
+}
