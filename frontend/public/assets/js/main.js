@@ -29,7 +29,7 @@ function hello(files) {
 }
 
 $(document).ready(() => {
-    $.get('../apiKey.txt').then(str => setGoogleMapsScript(str.trim()))
+    $.get('../../../apiKey.txt').then(str => setGoogleMapsScript(str.trim()))
 })
 
 const setGoogleMapsScript = key => {
