@@ -36,7 +36,7 @@ const onUpload = (request, response, next) => {
                 })
         })
         .catch(err => {
-            console.err(err);
+            console.error(err)
             next(err)
         })
 };
