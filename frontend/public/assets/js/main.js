@@ -33,10 +33,9 @@ $(document).ready(() => {
 })
 
 const setGoogleMapsScript = key => {
-const googleMapScript =
-    '<script async defer src="https://maps.googleapis.com/maps/api/js?key=' +
-    key +
-    '&callback=initMap"></script>'
+    const googleMapScript =
+        '<script async defer src="https://maps.googleapis.com/maps/api/js?key=' +
+        key +
+        '&callback=initMap"></script>'
     $('head').append(googleMapScript)
 }
-
