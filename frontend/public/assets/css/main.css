@@ -2265,6 +2265,11 @@
 		margin-bottom: 3em;
 		margin-left: 2em; 
 	}
+	.mapStyle{
+		height: 100%;
+		margin: 0;
+		padding: 0;			
+	}
 
 	.box {
 		background: #fff;
