@@ -12,7 +12,6 @@ const onUpload = (request, response, next) => {
         limit: '5gb'
     })
         .then(rawZipBytes => {
-            // console.log(`parsed raw body.  ${rawZipBytes.length}`)
             JSZip.loadAsync(rawZipBytes)
                 .then(zip =>
                     zip
@@ -22,9 +21,7 @@ const onUpload = (request, response, next) => {
                 )
                 .then(pair => {
                     const [zip, text] = pair;
-                    // console.log(text)
                     const json = JSON.parse(text);
-                    // console.log(json)
                     response.json({
                         greeting: 'hello world',
                         size: rawZipBytes.length,
@@ -42,6 +39,10 @@ const onUpload = (request, response, next) => {
 };
 
 const getMessageData = zip => {
+    zip.folder("/messages/inbox/").filter((path, filter) => {
+        console.log(path)
+        return true
+    })
     return { m1: 'hi', m2: 'by' }
 };
 
