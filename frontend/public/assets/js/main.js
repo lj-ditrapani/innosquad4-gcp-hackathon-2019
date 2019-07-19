@@ -28,6 +28,18 @@ function hello(files) {
         })
 }
 
+$(document).ready(() => {
+    $.get('../apiKey.txt').then(str => setGoogleMapsScript(str.trim()))
+})
+
+const setGoogleMapsScript = key => {
+const googleMapScript =
+    '<script async defer src="https://maps.googleapis.com/maps/api/js?key=' +
+    key +
+    '&callback=initMap"></script>'
+    $('head').append(googleMapScript)
+}
+
 ;(function($) {
     var $window = $(window),
         $body = $('body'),
