@@ -24,24 +24,24 @@ function sendZip(files) {
 
 function openPage(evt, pageName) {
     // Declare all variables
-    var i, tabcontent, tablinks;
-  
+    let i, tabcontent, tablinks
+
     // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
+    tabcontent = document.getElementsByClassName('tabcontent')
     for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
+        tabcontent[i].style.display = 'none'
     }
-  
+
     // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
+    tablinks = document.getElementsByClassName('tablinks')
     for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].className = tablinks[i].className.replace(' active', '')
     }
-  
+
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(pageName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
+    document.getElementById(pageName).style.display = 'block'
+    evt.currentTarget.className += ' active'
+}
 
 $(document).ready(() => {
     $.get('../../../apiKey.txt').then(str => setGoogleMapsScript(str.trim()))
@@ -55,7 +55,8 @@ const setGoogleMapsScript = key => {
     $('head').append(googleMapScript)
 }
 
-var map
+let map
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 1,
@@ -64,7 +65,7 @@ function initMap() {
     })
 
     // Create a <script> tag and set the USGS URL as the source.
-    var script = document.createElement('script')
+    let script = document.createElement('script')
     script.src =
         'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js'
     document.getElementsByTagName('head')[0].appendChild(script)
@@ -74,10 +75,10 @@ function initMap() {
 // set of coordinates.
 window.eqfeed_callback = function(results) {
     console.log(results)
-    for (var i = 0; i < results.features.length; i++) {
-        var coords = results.features[i].geometry.coordinates
-        var latLng = new google.maps.LatLng(coords[1], coords[0])
-        var marker = new google.maps.Marker({
+    for (let i = 0; i < results.features.length; i++) {
+        const coords = results.features[i].geometry.coordinates
+        const latLng = new google.maps.LatLng(coords[1], coords[0])
+        const marker = new google.maps.Marker({
             position: latLng,
             map: map
         })
