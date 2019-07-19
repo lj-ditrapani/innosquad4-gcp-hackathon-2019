@@ -55,22 +55,31 @@ const getSearchHistory = zip =>
         .async('string')
         .then(text => JSON.parse(text))
 
-const getLocationData = zip => {
-    const fs = require("fs");
-    const text = fs.readFileSync("./apiKey.txt", 'utf8');
-    console.log(text)
-    const url = `http://api.ipstack.com/8.8.8.8?access_key=${text}`
+const apiKey = fs.readFileSync("./apiKey.txt", 'utf8');
+
+const ipLocation = ip => {
+    const url = `http://api.ipstack.com/${ip}?access_key=${apiKey}`
     console.log(url)
-    request.get(url).then(response => console.log(response))
+    return request.get(url).then(response => {
+        console.log("hiza")
+        console.log(response)
+        return response
+    })
+}
+
+const getLocationData = zip => {
     return zip
         .file('security_and_login_information/used_ip_addresses.json')
         .async('string')
-        .then(text => JSON.parse(text))
+        .then(text => {
+            const promises = JSON.parse(text).used_ip_address.map(obj => ipLocation(obj.ip))
+            return Promise.all(promises)
+        })
 }
 
 app.use(express.static('frontend/public'));
 app.post('/upload', onUpload);
 
-// const file = fs.readFileSync("facebook-mauricenelson12327.zip")
-// processZip(file).then(r => console.log(r))
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const file = fs.readFileSync("facebook-mauricenelson12327.zip")
+processZip(file).then(r => console.log(r))
+// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
