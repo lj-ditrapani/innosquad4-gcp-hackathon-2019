@@ -1,4 +1,9 @@
-Add a google maps API key to a file frontend/public/apiKey.txt.
+This app needs 2 api keys.
+
+- ipstack: Add a file called ./apiKey.txt and paste in your ipstack.com api key. 
+  The file is gitignored. 
+- Google Maps:
+  Add a google maps API key to a file frontend/public/apiKey.txt. (also gitignored)
 
 Build
 
@@ -19,9 +24,6 @@ Develop
     npm run build
     cd ..
     npm start
-
-To use API key: Add a file called apiKey.txt to src and paste in your ipstack.com api key. 
-The file is currently gitignored. 
 
 USEFUL FILES TO ANALYZE:
 ========================
