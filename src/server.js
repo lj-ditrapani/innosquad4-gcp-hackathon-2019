@@ -1,6 +1,4 @@
 const express = require('express')
-const _ = require('lodash')
-const contentType = require('content-type')
 const getRawBody = require('raw-body')
 const JSZip = require('jszip')
 const fs = require('fs')
@@ -43,7 +41,7 @@ const processZip = rawZipBytes =>
 const getMessageData = zip => {
     const zips = zip
         .folder('messages/inbox')
-        .filter((path, filter) => _.endsWith(path, 'message_1.json'))
+        .filter((path, filter) => path.endsWith('message_1.json'))
     const promises = zips.map(zip => zip.async('string').then(json => JSON.parse(json)))
     return Promise.all(promises)
 }
