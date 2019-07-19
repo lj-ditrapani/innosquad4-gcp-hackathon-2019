@@ -2,6 +2,7 @@ const express = require('express');
 const contentType = require('content-type');
 const getRawBody = require('raw-body');
 const JSZip = require('jszip');
+const fs = require('fs')
 const app = express();
 const port = 3000;
 
@@ -38,11 +39,40 @@ const onUpload = (request, response, next) => {
         })
 };
 
+const processZip = rawZipBytes =>
+    JSZip.loadAsync(rawZipBytes)
+        .then(zip =>
+            zip
+            .file('search_history/your_search_history.json')
+            .async('string')
+            .then(text => [zip, text])
+        )
+        .then(pair => {
+            const [zip, text] = pair;
+            const json = JSON.parse(text);
+            return {
+                greeting: 'hello world',
+                size: rawZipBytes.length,
+                lastSearch: json.searches[0].title,
+                messages: getMessageData(zip),
+                searchHistory: getSearchHistory(zip),
+                locations: getLocationData(zip)
+            }
+        })
+
 const getMessageData = zip => {
+    /*
+    console.log('heer')
     zip.folder("/messages/inbox/").filter((path, filter) => {
         console.log(path)
         return true
+    }).async("string").then(text => {
+        console.log('aeoua')
+        console.log(text)
+        console.log('aeoua')
     })
+    console.log('xxx')
+    */
     return { m1: 'hi', m2: 'by' }
 };
 
@@ -329,4 +359,6 @@ const getLocationData = zip => {
 app.use(express.static('frontend/public'));
 app.post('/upload', onUpload);
 
+// const file = fs.readFileSync("facebook-mauricenelson12327.zip")
+// processZip(file)
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
