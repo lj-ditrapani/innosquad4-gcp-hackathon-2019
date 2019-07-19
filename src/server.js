@@ -1,15 +1,15 @@
-const express = require('express');
+const express = require('express')
 const _ = require('lodash')
-const contentType = require('content-type');
-const getRawBody = require('raw-body');
-const JSZip = require('jszip');
+const contentType = require('content-type')
+const getRawBody = require('raw-body')
+const JSZip = require('jszip')
 const fs = require('fs')
-const app = express();
-const port = 3000;
+const app = express()
+const port = 3000
 const request = require('request-promise-native')
 
 const onUpload = (request, response, next) => {
-    console.log(request.headers['content-type']);
+    console.log(request.headers['content-type'])
     getRawBody(request, {
         length: request.headers['content-length'],
         limit: '5gb'
@@ -20,7 +20,7 @@ const onUpload = (request, response, next) => {
             console.error(err)
             next(err)
         })
-};
+}
 
 const processZip = rawZipBytes =>
     JSZip.loadAsync(rawZipBytes)
@@ -41,12 +41,12 @@ const processZip = rawZipBytes =>
         })
 
 const getMessageData = zip => {
-    const zips = zip.folder("messages/inbox").filter((path, filter) =>
-        _.endsWith(path, "message_1.json")
-    )
+    const zips = zip
+        .folder('messages/inbox')
+        .filter((path, filter) => _.endsWith(path, 'message_1.json'))
     const promises = zips.map(zip => zip.async('string').then(json => JSON.parse(json)))
     return Promise.all(promises)
-};
+}
 
 const getSearchHistory = zip =>
     zip
@@ -54,7 +54,7 @@ const getSearchHistory = zip =>
         .async('string')
         .then(text => JSON.parse(text))
 
-const apiKey = fs.readFileSync("./apiKey.txt", 'utf8');
+const apiKey = fs.readFileSync('./apiKey.txt', 'utf8')
 
 const ipLocation = ip => {
     const url = `http://api.ipstack.com/${ip}?access_key=${apiKey}`
@@ -69,14 +69,16 @@ const getLocationData = zip => {
         .file('security_and_login_information/used_ip_addresses.json')
         .async('string')
         .then(text => {
-            const promises = JSON.parse(text).used_ip_address.map(obj => ipLocation(obj.ip))
+            const promises = JSON.parse(text).used_ip_address.map(obj =>
+                ipLocation(obj.ip)
+            )
             return Promise.all(promises)
         })
 }
 
-app.use(express.static('frontend/public'));
-app.post('/upload', onUpload);
+app.use(express.static('frontend/public'))
+app.post('/upload', onUpload)
 
 // const file = fs.readFileSync("facebook-mauricenelson12327.zip")
 // processZip(file).then(r => console.log(r))
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
