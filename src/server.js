@@ -42,8 +42,23 @@ const getMessageData = zip => {
     const zips = zip
         .folder('messages/inbox')
         .filter((path, filter) => path.endsWith('message_1.json'))
-    const promises = zips.map(zip => zip.async('string').then(json => JSON.parse(json)))
-    return Promise.all(promises)
+    const promises = zips.map(zip => zip.async('string'))
+    return Promise.all(promises).then(textArray => textArray.map(processMessageText))
+}
+
+const processMessageText = text => {
+    const json = JSON.parse(text)
+    const participants = json.participants.map(obj => obj.name)
+    console.log(participants)
+    return json.messages
+        .filter(message => message.content !== undefined)
+        .map(input => ({
+            participants,
+            senderName: input.sender_name,
+            timestampMs: input.timestamp_ms,
+            size: input.content.length,
+            title: input.title
+        }))
 }
 
 const getSearchHistory = zip =>
