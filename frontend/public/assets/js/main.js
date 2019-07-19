@@ -1,3 +1,7 @@
+$(document).ready(() => {
+    $.get('../../../apiKey.txt').then(str => setGoogleMapsScript(str.trim()))
+    setupCanvas()
+})
 
 function sendZip(files) {
     console.log('I get files')
@@ -48,10 +52,6 @@ function openPage(evt, pageName) {
     evt.currentTarget.className += ' active'
 }
 
-$(document).ready(() => {
-    $.get('../../../apiKey.txt').then(str => setGoogleMapsScript(str.trim()))
-})
-
 const setGoogleMapsScript = key => {
     console.log(key)
     const googleMapScript =
@@ -82,39 +82,42 @@ function addMapPins(results) {
         })
     }
 }
-var events= document.getElementById("eventChart").getContext("2d");
-var myDoughnutChart = new Chart(events, {
-    type: 'doughnut',
-    data: {
-        labels: ["Hackathons", "Food", "Networking", "Other"],
-        datasets: [
-        {
-            label: "Events",
-            data: [50, 25, 10, 15],
-            backgroundColor: [
-            "#031926", 
-            "#468189",
-            "#77ACA2",
-            "#9DBEBB"                                        
+
+function setupCanvas() {
+    const canvas = document.getElementById("eventChart").getContext("2d");
+    const myDoughnutChart = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+            labels: ["Hackathons", "Food", "Networking", "Other"],
+            datasets: [
+                {
+                    label: "Events",
+                    data: [50, 25, 10, 15],
+                    backgroundColor: [
+                        "#031926", 
+                        "#468189",
+                        "#77ACA2",
+                        "#9DBEBB"                                        
+                    ]
+                }
             ]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                position: "top",
+                fontSize: 18,
+                fontColor: "#111"
+            },
+            legend: {
+                display: true,
+                position: "bottom",
+                labels: {
+                    fontColor: "#333",
+                    fontSize: 16
+                }
+            }
         }
-        ]
-    },
-    options: {
-    responsive: true,
-    title: {
-        display: true,
-        position: "top",
-        fontSize: 18,
-        fontColor: "#111"
-    },
-    legend: {
-        display: true,
-        position: "bottom",
-        labels: {
-        fontColor: "#333",
-        fontSize: 16
-        }
-    }
+    });
 }
-});
