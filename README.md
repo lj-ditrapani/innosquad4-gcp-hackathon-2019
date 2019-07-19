@@ -1,3 +1,5 @@
+Add a google maps API key to a file frontend/public/apiKey.txt.
+
 Build
 
     sh build.sh
