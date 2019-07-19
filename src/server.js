@@ -68,7 +68,7 @@ const getSearchHistory = zip =>
     zip
         .file('search_history/your_search_history.json')
         .async('string')
-        .then(text => JSON.parse(text))
+        .then(text => JSON.parse(text).searches.map(obj => obj.data[0].text))
 
 const apiKey = fs.readFileSync('./apiKey.txt', 'utf8')
 
