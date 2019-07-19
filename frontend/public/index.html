@@ -68,6 +68,7 @@
                     <h2>Analytics</h2>
                     <div class="tab">
                         <button class="tablinks" onclick="openPage(event, 'mainMap')">Your Places</button>
+                        <button class="tablinks" onclick="openPage(event, 'mainEvents')">Your Places</button>
                         <button class="tablinks" onclick="openPage(event, 'mainMessages')">Your Messages</button>
                         <button class="tablinks" onclick="openPage(event, 'mainHistory')">Your History</button>
                     </div>
@@ -78,12 +79,26 @@
                     <div class="googleMaps">
                         <h3>Your Places</h3>
                         <div id="map" class="mapStyle"></div>
-                    </div>
-                </section>
+                    </body>
+                </div>
+            </section>
+
+            <section id="mainEvents" class="tabcontent custombox main">
+
+				<div class="eventDisplay">
+					<h3>Your Events</h3>
+					<body>                    
+                        <canvas id="eventChart" ></canvas>
+					</body>
+				</div>
+			</section>
+
+
+            <section id="mainMessages" class="tabcontent custombox main">
 
                 <section id="mainMessages" class="tabcontent custombox main">
                     <div class="messageDisplay">
-                        <h3> Your Messages</h3>
+                        <h3>Your Messages</h3>
                         <div></div>
                     </div>
                 </section>
@@ -103,5 +118,4 @@
                 </footer>
             </div>
         </div>
-    </body>
 </html>
