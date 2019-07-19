@@ -40,16 +40,3 @@ const googleMapScript =
     $('head').append(googleMapScript)
 }
 
-;(function($) {
-    var $window = $(window),
-        $body = $('body'),
-        $header = $('#header'),
-        $banner = $('#banner')
-
-    // Play initial animations on page load.
-    $window.on('load', function() {
-        window.setTimeout(function() {
-            $body.removeClass('is-preload')
-        }, 100)
-    })
-})(jQuery)
