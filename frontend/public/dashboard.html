@@ -30,12 +30,12 @@
 					<div class="tab">
 						<button class="tablinks" onclick="openPage(event, 'mainMap')">Your Places</button>
 						<button class="tablinks" onclick="openPage(event, 'mainMessages')">Your Messages</button>
-						<button class="tablinks" onclick="openPage(event, 'Tokyo')">Tokyo</button>
+						<button class="tablinks" onclick="openPage(event, 'mainHistory')">Your History</button>
 					</div>
 				</section>
 
 			<!-- Main -->
-				<section id="mainMap" class="tabcontent custombox">
+				<section id="mainMap" class="tabcontent custombox main">
 
 					<div class="googleMaps">
 						<h3>Your Places</h3>
@@ -45,14 +45,23 @@
 					</div>
 				</section>
 
-				<section id="mainMessages" class="tabcontent custombox">
+				<section id="mainMessages" class="tabcontent custombox main">
 
 					<div class="messageDisplay">
-						<h3>Your Messages</h3>
+						<h3> Your Messages</h3>
 						<body>
 						</body>
 					</div>
 				</section>
+
+				<section id="mainHistory" class="tabcontent custombox main">
+
+						<div class="historyDisplay">
+							<h3> Your History</h3>
+							<body>
+							</body>
+						</div>
+					</section>
 
 			<!-- Footer -->
 				<footer id="footer">

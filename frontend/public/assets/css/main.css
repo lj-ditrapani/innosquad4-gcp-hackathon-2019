@@ -3275,21 +3275,21 @@
 
 /* Main */
 
-	#main {
+	.main {
 		padding: 4em 0;
 	}
 
-		#main > header {
+		.main > header {
 			text-align: center;
 			margin: 0 0 3em 0;
 		}
 
-			#main > header h2 {
+			.main > header h2 {
 				font-size: 2.75em;
 				margin: 0;
 			}
 
-			#main > header p {
+			.main > header p {
 				border-top: solid 2px #e5e5e5;
 				color: #777;
 				display: inline-block;
@@ -3298,7 +3298,7 @@
 				padding: 1em 0 1.25em 0;
 			}
 
-	body.landing #main {
+	body.landing .main {
 		margin-top: -14em;
 	}
 
@@ -3800,24 +3800,24 @@
 
 		/* Main */
 
-			#main {
+			.main {
 				padding: 4em 0 0 0;
 			}
 
-				#main > header {
+				.main > header {
 					margin: 0 2em 1.5em 2em;
 				}
 
-					#main > header h2 {
+					.main > header h2 {
 						font-size: 2em;
 					}
 
-					#main > header p {
+					.main > header p {
 						font-size: 1em;
 						padding-bottom: 1em;
 					}
 
-			body.landing #main {
+			body.landing .main {
 				padding: 0;
 				margin-top: 0;
 			}
@@ -3934,7 +3934,15 @@
 
 		/* Main */
 
-			#main > .box:first-child {
+			.main > .box:first-child {
+				margin-top: 0;
+			}
+
+			.main > .box:first-child {
+				margin-top: 0;
+			}
+
+			.main > .box:first-child {
 				margin-top: 0;
 			}
 
