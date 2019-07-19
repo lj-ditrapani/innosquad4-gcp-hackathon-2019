@@ -27,15 +27,29 @@
 			<!-- Banner -->
 				<section id="banner">
 					<h2>Analytics</h2>
+					<div class="tab">
+						<button class="tablinks" onclick="openPage(event, 'mainMap')">Your Places</button>
+						<button class="tablinks" onclick="openPage(event, 'mainMessages')">Your Messages</button>
+						<button class="tablinks" onclick="openPage(event, 'Tokyo')">Tokyo</button>
+					</div>
 				</section>
 
 			<!-- Main -->
-				<section id="main" class="custombox">
+				<section id="mainMap" class="tabcontent custombox">
 
 					<div class="googleMaps">
 						<h3>Your Places</h3>
 						<body>
 						<div id="map" class="mapStyle"></div>
+						</body>
+					</div>
+				</section>
+
+				<section id="mainMessages" class="tabcontent custombox">
+
+					<div class="messageDisplay">
+						<h3>Your Messages</h3>
+						<body>
 						</body>
 					</div>
 				</section>
