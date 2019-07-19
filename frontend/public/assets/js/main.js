@@ -1,5 +1,5 @@
-const bob = new Chart()
-console.log(bob)
+// const bob = new Chart()
+// console.log(bob)
 
 function sendZip(files) {
     console.log('I get files')
