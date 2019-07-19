@@ -6,6 +6,7 @@ const JSZip = require('jszip');
 const fs = require('fs')
 const app = express();
 const port = 3000;
+const request = require('request-promise-native')
 
 const onUpload = (request, response, next) => {
     console.log(request.headers['content-type']);
@@ -55,8 +56,12 @@ const getSearchHistory = zip =>
         .then(text => JSON.parse(text))
 
 const getLocationData = zip => {
-    let fs = require("fs");
-    let text = fs.readFileSync("./apiKey.txt", 'utf8');
+    const fs = require("fs");
+    const text = fs.readFileSync("./apiKey.txt", 'utf8');
+    console.log(text)
+    const url = `http://api.ipstack.com/8.8.8.8?access_key=${text}`
+    console.log(url)
+    request.get(url).then(response => console.log(response))
     return zip
         .file('security_and_login_information/used_ip_addresses.json')
         .async('string')
