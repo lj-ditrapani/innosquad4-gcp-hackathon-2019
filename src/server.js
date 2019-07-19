@@ -41,7 +41,6 @@ const processZip = rawZipBytes =>
         })
 
 const getMessageData = zip => {
-    console.log('heer')
     const zips = zip.folder("messages/inbox").filter((path, filter) =>
         _.endsWith(path, "message_1.json")
     )
@@ -59,11 +58,9 @@ const apiKey = fs.readFileSync("./apiKey.txt", 'utf8');
 
 const ipLocation = ip => {
     const url = `http://api.ipstack.com/${ip}?access_key=${apiKey}`
-    console.log(url)
     return request.get(url).then(response => {
-        console.log("hiza")
-        console.log(response)
-        return response
+        const json = JSON.parse(response)
+        return [json.latitude, json.longitude]
     })
 }
 
@@ -80,6 +77,6 @@ const getLocationData = zip => {
 app.use(express.static('frontend/public'));
 app.post('/upload', onUpload);
 
-const file = fs.readFileSync("facebook-mauricenelson12327.zip")
-processZip(file).then(r => console.log(r))
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+// const file = fs.readFileSync("facebook-mauricenelson12327.zip")
+// processZip(file).then(r => console.log(r))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
