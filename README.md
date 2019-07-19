@@ -18,6 +18,8 @@ Develop
     cd ..
     npm start
 
+To use API key: Add a file called apiKey.txt to src and paste in your ipstack.com api key. 
+The file is currently gitignored. 
 
 USEFUL FILES TO ANALYZE:
 ========================
