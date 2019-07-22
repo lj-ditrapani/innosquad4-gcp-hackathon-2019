@@ -23,5 +23,6 @@ FROM base as release
 RUN npm install --only prod
 COPY frontend/public/ frontend/public/
 COPY src src/
+COPY apiKey.txt ./
 EXPOSE 3000
 CMD [ "npm", "start"]
