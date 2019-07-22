@@ -84,21 +84,16 @@ function addMapPins(results) {
 }
 
 function setupCanvas() {
-    const canvas = document.getElementById("eventChart").getContext("2d");
+    const canvas = document.getElementById('eventChart').getContext('2d')
     const myDoughnutChart = new Chart(canvas, {
         type: 'doughnut',
         data: {
-            labels: ["Hackathons", "Food", "Networking", "Other"],
+            labels: ['Hackathons', 'Food', 'Networking', 'Other'],
             datasets: [
                 {
-                    label: "Events",
+                    label: 'Events',
                     data: [50, 25, 10, 15],
-                    backgroundColor: [
-                        "#031926", 
-                        "#468189",
-                        "#77ACA2",
-                        "#9DBEBB"                                        
-                    ]
+                    backgroundColor: ['#031926', '#468189', '#77ACA2', '#9DBEBB']
                 }
             ]
         },
@@ -106,18 +101,18 @@ function setupCanvas() {
             responsive: true,
             title: {
                 display: true,
-                position: "top",
+                position: 'top',
                 fontSize: 18,
-                fontColor: "#111"
+                fontColor: '#111'
             },
             legend: {
                 display: true,
-                position: "bottom",
+                position: 'bottom',
                 labels: {
-                    fontColor: "#333",
+                    fontColor: '#333',
                     fontSize: 16
                 }
             }
         }
-    });
+    })
 }
