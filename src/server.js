@@ -44,9 +44,9 @@ const getMessageData = zip => {
         .folder('messages/inbox')
         .filter((path, filter) => path.endsWith('message_1.json'))
     const promises = zips.map(zip => zip.async('string'))
-    return Promise
-        .all(promises)
-        .then(textArray => _.flatten(textArray.map(processMessageText)), true)
+    return Promise.all(promises).then(textArray =>
+        _.flatten(textArray.map(processMessageText), true)
+    )
 }
 
 const processMessageText = text => {
